@@ -23,7 +23,7 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/http/pprof"
+	pprof "net/http/pprof"
 	"os"
 	"path/filepath"
 	"strings"
@@ -109,6 +109,7 @@ func main() {
 	index := flag.String("index", build.DefaultDir, "set index directory to use")
 	html := flag.Bool("html", true, "enable HTML interface")
 	print := flag.Bool("print", false, "enable local result URLs")
+	api := flag.Bool("api", false, "enable Api interface")
 	enablePprof := flag.Bool("pprof", false, "set to enable remote profiling.")
 	sslCert := flag.String("ssl_cert", "", "set path to SSL .pem holding certificate.")
 	sslKey := flag.String("ssl_key", "", "set path to SSL .pem holding key.")
@@ -169,6 +170,7 @@ func main() {
 
 	s.Print = *print
 	s.HTML = *html
+	s.API = *api
 
 	if *hostCustomization != "" {
 		s.HostCustomQueries = map[string]string{}

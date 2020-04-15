@@ -1,0 +1,5 @@
+[
+{"GithubUser": "username"},
+{"GithubOrg": "org"},
+{"GitilesURL": "https://gerrit.googlesource.com", "Name": "zoekt" }
+]

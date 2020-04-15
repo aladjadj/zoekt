@@ -32,6 +32,7 @@ import (
 	"golang.org/x/net/context"
 
 	"github.com/google/zoekt"
+	"github.com/google/zoekt/api"
 	"github.com/google/zoekt/query"
 )
 
@@ -79,6 +80,9 @@ type Server struct {
 
 	// Serve HTML interface
 	HTML bool
+
+	// Serve API interface
+	API bool
 
 	// If set, show files from the index.
 	Print bool
@@ -164,6 +168,10 @@ func NewMux(s *Server) (*http.ServeMux, error) {
 		mux.HandleFunc("/", s.serveSearchBox)
 		mux.HandleFunc("/about", s.serveAbout)
 		mux.HandleFunc("/print", s.servePrint)
+	}
+
+	if s.API {
+		mux.Handle(api.DefaultAPIPath+"/", http.StripPrefix(api.DefaultAPIPath, api.NewMux(s.Searcher))) // /api
 	}
 
 	return mux, nil

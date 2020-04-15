@@ -1,9 +1,12 @@
 module github.com/google/zoekt
 
+go 1.14
+
 require (
 	github.com/andygrunwald/go-gerrit v0.0.0-20191101112536-3f5e365ccf57
 	github.com/fsnotify/fsnotify v1.4.7
 	github.com/gfleury/go-bitbucket-v1 v0.0.0-20200104105711-ddbafbb02522
+	github.com/golang/gddo v0.0.0-20200324184333-3c2cc9a6329d
 	github.com/golang/protobuf v1.3.3 // indirect
 	github.com/google/go-cmp v0.4.0
 	github.com/google/go-github/v27 v27.0.6
